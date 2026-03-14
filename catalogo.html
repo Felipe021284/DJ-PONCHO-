@@ -1,220 +1,650 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-  <title>MI TARJETA</title>
   <meta charset="UTF-8">
+  <title>CATALOGO DIGITAL</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Fuentes -->
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <!-- Iconos -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+  <!-- Fuente -->
+  <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+  <!-- Importar Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto&family=Montserrat&family=Lobster&family=Pacifico&family=Shadows+Into+Light&family=Dancing+Script&family=Raleway&family=Oswald&family=Playfair+Display&family=Indie+Flower&display=swap" rel="stylesheet">
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Baloo 2', sans-serif;
-    }
-
     body {
+      margin: 0;
+      background-color: black;
+    }
+/*
+    .padre {
       display: flex;
-      align-items: center;
+      flex-direction: column;
       justify-content: center;
+      align-items: center;
       min-height: 100vh;
-      background: black;
-      flex-wrap: wrap;
-    }
-
-    /* Tarjeta */
-    .card {
-      position: relative;
-      width: 300px;
-      max-width: 90%; /* responsive */
-      
-      border-radius: 5px;
-      overflow: hidden;
-      transition: .5s;
-      margin: 15px 20px;
-    }
-
-    /* Primera capa de fondo */
-    .card::before {
-      content: "";
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: url("https://i.ibb.co/JwG4W0jf/IMG-20260221-WA0001.jpg") no-repeat center center;
-      background-size: cover;
-      animation: mover1 5s infinite linear;
-      z-index: -2;
-    }
-
-    /* Segunda capa de fondo */
-    .card::after {
-      content: "";
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: url("https://i.ibb.co/JwG4W0jf/IMG-20260221-WA0001.jpg") no-repeat center center;
-      background-size: cover;
-      opacity: 0.5; /* más tenue */
-      animation: mover2 5s infinite linear;
-      z-index: -1;
-    }
-
-    @keyframes mover1 {
-      0%   { transform: scale(1) translate(0,0); }
-      50%  { transform: scale(1.1) translate(-20px, -10px); }
-      100% { transform: scale(1) translate(0,0); }
-    }
-
-    @keyframes mover2 {
-      0%   { transform: scale(1) translate(0,0); }
-      50%  { transform: scale(1.1) translate(20px, 15px); }
-      100% { transform: scale(1) translate(0,0); }
-    }
-
-    .card:hover {
-      box-shadow: 0 5px 10px rgba(0,0,0,1);
-      transform: translateY(-20px);
-    }
-
-    /* Encabezado */
-    .card .head {
-      height: 125px;
-      width: 100%;
-      position: relative;
-    }
-
-  
-
-.logo-container {
-  width: 220px;       /* tamaño del círculo */
-  height: 220px;      /* mismo valor para ancho y alto */
-  border-radius: 50%; /* recorte circular */
-  overflow: hidden;   /* oculta todo lo que sobresalga */
-  margin: 0 auto;
-  position: relative;
+    }*/
+    
+    .padre {
+  font-family: 'Shadows Into Light', cursive;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;   /* centra verticalmente */
+  align-items: center;       /* centra horizontalmente */
+  width: 100%;
+  min-height: 100vh;         /* ocupa toda la pantalla */
+  overflow-x: hidden;
 }
 
-.logo-container img {
-  width: 220px;       /* tamaño del círculo */
-  height: 220px;
-  object-fit: cover;  /* ajusta la imagen dentro del círculo */
+/* Responsive: en PC los hijos en fila y centrados */
+@media (min-width: 768px) {
+  .padre {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  .hijo {
+    width: 400px;
+    height: 600px;
+    margin: 20px;
+  }
+}
+
+
+  .hijo {
+  font-family: 'Shadows Into Light';
+  border-radius: 10px;
+  width: 90%;
+  max-width: 400px;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  color: black;
+  box-sizing: border-box;
+  opacity: 1;
+  margin: 20px auto;
+  text-align: center;
+  background: url("https://i.ibb.co/60BXMxCQ/depositphotos-69557169-stock-photo-dj-mixer-with-light-colored.webp") no-repeat center center;
+  background-size: cover;
+  animation: mover1 5s infinite linear;
+  position: relative; /* importante para el overlay */
+  z-index: 0;         /* ajustamos para que el overlay se coloque encima */
+}
+
+/* Capa negra transparente */
+.hijo::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5); /* negro con 50% transparencia */
+  border-radius: 10px; /* igual que el contenedor */
+  z-index: 1;
+}
+
+/* Aseguramos que el texto quede encima de la capa */
+.hijo h2, .hijo p, .hijo div {
+  position: relative;
+  z-index: 2;
+  color: white; /* texto blanco para contraste */
+}
+
+    
+
+    
+    
+    /*animacion color*/
+h2,h1{
+  animation: animate 10s infinite linear;
+}
+
+@keyframes animate {
+  0%,100%{ color:aqua; }
+  25%{ color: deeppink; }
+  50%{ color:deepskyblue; }
+  75%{ color: white; }
+}
+
+ /*efecto olas de mar h2 div 2*/
+    #wave-text {
+   /* font-size:2em;*/
+    font-size:20px;
+ /*   font-family: 'Raleway', sans-serif;*/
+    display: inline-block;
+    color: #00ffff; /* aqua */
+    white-space: pre; /* mantiene los espacios */
+  }
+
+  #wave-text span {
+    display: inline-block;
+    animation: wave 2s infinite ease-in-out;
+  }
+
+  @keyframes wave {
+    0%   { transform: translateY(0); }
+    25%  { transform: translateY(-8px); }
+    50%  { transform: translateY(0); }
+    75%  { transform: translateY(8px); }
+    100% { transform: translateY(0); }
+  }
+  /*efecto zoom p */
+   #zoom-text {
+  font-size: 1rem;
+  opacity: 0;
+  transform: scale(0);
+  animation: zoomIn 5s forwards ease-out, animate 10s infinite linear;
+}
+
+
+
+/* Animación zoom */
+@keyframes zoomIn {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+
+
+
+
+
+
+
+/* slider div 5*/
+/* Slider contenedor */
+.slider {
+  width: 300px;
+  height: 300px;
+  overflow: hidden;
+  border: 1px solid white;
+  border-radius: 10px;
+  margin: 10px;
+  box-shadow: 
+    0 0 10px rgba(255, 255, 255, 0.8),
+    0 0 20px rgba(255, 255, 255, 0.6),
+    0 0 40px rgba(255, 255, 255, 0.4),
+    0 0 80px rgba(255, 255, 255, 0.2);
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slides img {
+  width: 300px;       /* igual al slider */
+  height: 300px;      /* igual al slider */
+  flex-shrink: 0;
+  object-fit: cover;  /* recorta y ajusta */
   display: block;
 }
 
-    .card .head .img img {
-      width: 250px;
-      height: 250px;
-      border-radius: 50%;
-      object-fit: cover;
-    }
+/* Indicadores (dots) */
+.indicator {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  gap: 8px;
+}
 
-    /* Texto */
-    .card .description {
-      height: 180px;
-      padding: 40px 20px 20px 20px;
-      border-bottom: white solid 1px ;
-      text-align: center;
-      position: relative;
-      z-index: 1; /* encima del fondo */
-    }
+.dot {
+  width: 12px;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transition: background 0.3s, transform 0.3s;
+  cursor: pointer;
+}
 
-    .card .description h2,h4,p,i{
-      animation: animate 10s infinite linear;
-    }
+.dot.active {
+  background: white;
+  transform: scale(1.2);
+}
 
-    @keyframes animate {
-      0%,100%{ color:aqua; }
-      25%{ color: deeppink; }
-      50%{ color:deepskyblue; }
-      75%{ color: white; }
-    }
 
-    /* Redes sociales */
-    .card .contact {
-      width: 100%;
-      height: 75px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size:30px;
-      position: relative;
-      z-index: 1;
-    }
 
-    .card .contact a {
-      text-decoration: none;
-      color: #fff;
-      padding: 5px 10px;
-      border-radius: 100%;
-      transition: .5s;  
-    }
+/* ====== Imagen con zoom ====== */
 
-    .card .contact a:hover {
-      background: linear-gradient(to top,blue,black);
-      box-shadow: 0 5px 5px rgba(0,0,0,1);
-      transform: translateY(-10px);
-    }
+/* Texto con data-text */
+#matrix-p4::before {
+  content: attr(data-text);   /* toma el texto del atributo */
+  color:white;             /* dorado */
+  font-size: 22px;
+  font-weight: bold;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+  
+  position: relative;
+  z-index: 2;                 /* encima del overlay */
+  display: block;
+  margin-bottom: 15px;
+  animation: caer 1.5s forwards; /* efecto caída tipo Matrix */
+}
 
-    /* Botón catálogo */
-    .CATALOGO{
-      position: relative;
-      left:65px;
-      text-align:center;
-      color:white;
-      text-decoration:none;
-      margin:10px;
-      width: 170px;
-      height:40px;
-      padding:5px;
-      font-size: 20px;
-      border-radius: 20px;
-      border: 1px white solid;
-      box-shadow:0px 0px 10px 1px white;
-      text-shadow: -2px 1px purple;
-      background: linear-gradient(-45deg,white, blue,black,blue,white );
-      background-size: 300%;
-      animation: bg-animation 20s infinite;
-      z-index: 1;
-    }
+/* Animación caída */
+@keyframes caer {
+  0%   { opacity: 0; transform: translateY(-50px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
 
-    @keyframes bg-animation {
-      0% { background-position: left; }
-      50% { background-position: right; }
-      100% { background-position: left; }
-    }
+/* Contenedor de la imagen */
+.footer-img {
+  position: relative;
+  z-index: 2; /* encima del overlay */
+  text-align: center;
+}
+
+/* Imagen con efecto zoom */
+.zoom-img {
+  width: 150px;          /* ajusta tamaño */ 
+  border-radius: 12px;
+  
+  border: 1px solid white;
+  box-shadow: 
+    0 0 10px rgba(255, 255, 255, 0.8),
+    0 0 20px rgba(255, 255, 255, 0.6),
+    0 0 40px rgba(255, 255, 255, 0.4),
+    0 0 80px rgba(255, 255, 255, 0.2);
+  
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  animation: zoomPulse 3s infinite ease-in-out;
+}
+
+/* hijo1: zoom */
+.hijo1 p {
+  transform: scale(0);
+  opacity: 0;
+  transition: transform 1s ease-out, opacity 1s ease-out;
+}
+.hijo1 p.activo {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.hijo2 p { opacity: 0; }
+.hijo2.activo p { animation: zoomGiro 3s forwards; }
+
+
+
+@keyframes zoomGiro {
+  0% { transform: scale(0) rotate(0deg); opacity: 0; }
+  50% { transform: scale(1.2) rotate(180deg); opacity: 1; }
+  100% { transform: scale(1) rotate(360deg); opacity: 1; }
+}
+
+
+/* hijo7: zoom pulsante */
+.hijo7 p {
+  transform: scale(0);
+  opacity: 0;
+}
+.hijo7 p.activo {
+  animation: zoomIn 1s ease forwards, zoomPulse 3s infinite ease-in-out;
+}
+
+@keyframes zoomIn {
+  0% { transform: scale(0); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes zoomPulse {
+  0%   { transform: scale(1); color: ; }
+  50%  { transform: scale(1.2); color: white; }
+  100% { transform: scale(1); color: ; }
+}
+
   </style>
 </head>
 <body>
-  <div class="card">
+  <div class="padre">
+    <div class="hijo hijo1">
+      <div class="mensaje-inicio">
+        <h2 id="matrix-text" data-text="DJ PONCH"></h2>
+        
+        <p>
+            
+            Te ofrece una experiencia única para tu evento. <br />
+             Nuestro paquete de 5 horas incluye: <br />
+
+* Un equipo de sonido profesional de alta calidad <br />
+* Un sistema de luces y efectos que hará que tu evento sea inolvidable <br />
+* Una pantalla y un proyector para presentaciones y entretenimiento <br />
+* Una cabina de DJ con mezclas en vivo para satisfacer todos los gustos musicales <br />
+* Una decoración de globos largos de colores para crear un ambiente festivo <br />
+
+
+        </p>
+      </div>
+    </div>
+    <div class="hijo hijo2">
+        <h2 id="wave-text">PRECIOS</h2>
+       <p>
+           El precio por paquete es de 4,300. <br />
+            Si necesitas más tiempo, puedes contratar horas extras por 600 cada una.
+       </p> 
   
-  <div class="logo-container">
-  <img src="https://i.ibb.co/fY34qXyZ/luznet.png
-  " alt="Logo LuzNet">
-</div>
+  
+  
+
+    </div>
     
-    <div class="description">
-      <h2>FELIPE MARTINEZ</h2>
-      <h4>DISEÑADOR WEB</h4>
-      <p>ESPECIALIZADO EN TARJETAS DIGITALES</p>
-    </div>
-    <div class="contact">
-      <a href="tel:3312381872"><i class="fa fa-phone"></i></a>
-      <a href="https://wa.me/qr/K3HPFDZLSFINP1"><i class="fa fa-whatsapp"></i></a>
-      <a href="https://www.facebook.com/Digital-World-100310082725612/"><i class="fa fa-facebook"></i></a>
-      <a href="http://tiktok.com/@felipemartinez5483"><i class="fa fa-tiktok"></i></a>
-      <a href="https://www.instagram.com/invites/contact/?i=1qfx13l6t6gy5&utm_content=g1iuoqt"><i class="fa fa-instagram"></i></a>
-      <a href="https://youtube.com/c/FELIPEMARTINEZCOMPOSITOR"><i class="fa fa-youtube"></i></a>
-      <a href="mailto:felipemartinez84@live.com.mx?Subject=bienvenido"><i class="fa fa-envelope-open"></i></a>
-    </div>
-    <div class="CATALOGO">
-      <a href="https://felipe021284.github.io/CATALOGO-V1/"><i class="fa fa-hand-o-right"> CATALOGO</i></a>
-    </div>
+    <!--div class="hijo hijo3">
+    
+    
+  
+<div class="fuentes-demo">
+  <h2>Fuentes <br /> Grupo 1</h2>
+  <p class="arial">Arial – limpia y moderna</p>
+  <p class="times">Times New Roman – clásica y elegante</p>
+  <p class="courier">Courier New – monoespaciada técnica</p>
+  <p class="comic">Comic Sans – divertida e informal</p>
+  <p class="georgia">Georgia – serif elegante</p>
+  <p class="impact">Impact – fuerte y llamativa</p>
+  <p class="verdana">Verdana – legible en pantalla</p>
+  <p class="trebuchet">Trebuchet MS – moderna</p>
+  <p class="garamond">Garamond – tradicional y refinada</p>
+  <p class="roboto">Roboto – moderna (Google)</p>
+</div>
+
+</div>
+        
+        
+    
+    
+    <div class="hijo hijo4">
+    
+    
+  
+<div class="fuentes-demo">
+  <h2>Fuentes <br> Grupo 2</h2>
+  <p class="montserrat">Montserrat – geométrica y limpia</p>
+  <p class="lobster">Lobster – display llamativa</p>
+  <p class="pacifico">Pacifico – manuscrita relajada</p>
+  <p class="shadows">Shadows Into Light – manuscrita ceremonial</p>
+  <p class="dancing">Dancing Script – cursiva manuscrita</p>
+  <p class="raleway">Raleway – elegante sans serif</p>
+  <p class="oswald">Oswald – compacta y fuerte</p>
+  <p class="playfair">Playfair Display – serif sofisticada</p>
+  <p class="indie">Indie Flower – manuscrita divertida</p>
+  <p class="cursive">Cursive genérica – estilo manuscrito</p>
+</div>
+
+
+        
+        
+    </div-->
+    
+    <div class="hijo hijo5">
+  <h2 class="zoom">GALERIA DE EVENTOS</h2>
+    <div class="slider">
+    
+    
+  <div class="slides">
+  
+   
+    <img src="https://i.ibb.co/234htp0G/p1.jpg
+    " alt="Foto 1">
+    <img src="https://i.ibb.co/mj15HFv/p2.jpg
+    " alt="Foto 2">
+    <img src="https://i.ibb.co/RfwRmTn/p3.jpg
+    " alt="Foto 3">
+    <img src="https://i.ibb.co/QF0s2RR3/p4.jpg
+    " alt="Foto 4">
+    <img src="https://i.ibb.co/99yMJ3kG/p5.jpg
+    " alt="Foto 5">
   </div>
+</div>
+
+<!-- Barra indicadora (fuera del slider) -->
+<div class="indicator">
+  <span class="dot active"></span>
+  <span class="dot active"></span>
+    <span class="dot active"></span>
+    <span class="dot active"></span>
+  <span class="dot"></span>
+  <!--span class="dot"></span-->
+</div>
+
+ </div>
+ 
+ <div class="hijo hijo7">
+    
+  
+  <div class="footer-img">
+  <!--p>Invitaciones LuzNet agradece tu preferencia.</p-->
+  <img class="zoom-img" src="https://i.ibb.co/5b7sMw5/IMG-20260226-WA0002.jpg
+  " alt="Logo LuzNet">
+   <p id="matrix-p4" data-text="✨agradece tu preferencia✨"></p>
+  </div>
+
+  <script>
+  
+  //efecto div 1
+    function prepararMatrixTexto() {
+      const p = document.getElementById('matrix-text');
+      if (!p) return;
+
+      const texto = p.getAttribute('data-text');
+      p.textContent = ''; // limpiar contenido
+
+      // Crear spans para cada letra con retraso aleatorio
+      for (let i = 0; i < texto.length; i++) {
+        const span = document.createElement('span');
+        span.textContent = texto[i];
+        const delay = (Math.random() * 1.5).toFixed(2); // retraso aleatorio
+        span.style.animationDelay = `${delay}s`;
+        p.appendChild(span);
+      }
+    }
+
+    // Observer para activar el efecto cada vez que el div1 entra en pantalla
+    document.addEventListener("DOMContentLoaded", () => {
+      const targetDiv = document.querySelector(".hijo1");
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            prepararMatrixTexto();
+          }
+        });
+      }, { threshold: 0.5 });
+
+      observer.observe(targetDiv);
+    });
+    
+    
+    
+  //efecto olas de mar div 2
+  function prepararWaveTexto() {
+    const p = document.getElementById('wave-text');
+    if (!p) return;
+
+    const texto = p.textContent;
+    p.textContent = ''; // limpiar contenido
+
+    // Crear spans para cada letra (incluyendo espacios)
+    for (let i = 0; i < texto.length; i++) {
+      const span = document.createElement('span');
+      span.textContent = texto[i] === " " ? "\u00A0" : texto[i]; // espacio visible
+      span.style.animationDelay = `${i * 0.2}s`; // efecto de ola progresivo
+      p.appendChild(span);
+    }
+  }
+
+  prepararWaveTexto();
+  
+  
+  
+ 
+
+
+
+
+function iniciarSliderDiv5() {
+  const hijo5 = document.querySelector(".hijo5");
+  const slides = hijo5.querySelector(".slides");
+  const dots = hijo5.querySelectorAll(".dot");
+  const slider = hijo5.querySelector(".slider");
+  
+
+  let index = 0;
+  let startX = 0;
+  let currentTranslate = 0;
+  let prevTranslate = 0;
+  const total = dots.length;
+
+  function updateIndicator() {
+    dots.forEach((dot, i) => {
+      dot.classList.toggle("active", i === index);
+    });
+  }
+
+  slides.addEventListener("touchstart", e => {
+    startX = e.touches[0].clientX;
+  });
+
+  slides.addEventListener("touchend", e => {
+    const endX = e.changedTouches[0].clientX;
+    const diff = endX - startX;
+
+    if (diff < -50 && index < total - 1) index++;
+    if (diff > 50 && index > 0) index--;
+
+    currentTranslate = -index * slider.clientWidth;
+    slides.style.transform = `translateX(${currentTranslate}px)`;
+    prevTranslate = currentTranslate;
+
+    updateIndicator();
+  });
+
+  // Inicializar
+  updateIndicator();
+}
+
+// Ejecutar al cargar la página
+document.addEventListener("DOMContentLoaded", iniciarSliderDiv5);
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const target = document.querySelector(".hijo5 .zoom");
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+      }
+    });
+  }, { threshold: 0.3 });
+
+  observer.observe(target);
+});
+
+
+  // slider
+  
+  
+  
+
+const slides = document.querySelector('.slides');
+const dots = document.querySelectorAll('.dot');
+const slideSize = 300; // ancho del slider
+let index = 0;
+const totalSlides = document.querySelectorAll('.slides img').length;
+
+function showSlide(i) {
+  index = i;
+  slides.style.transform = `translateX(-${index * slideSize}px)`;
+
+  // actualizar dots
+  dots.forEach((dot, idx) => {
+    dot.classList.toggle('active', idx === index);
+  });
+}
+
+function nextSlide() {
+  index++;
+  if (index >= totalSlides) index = 0;
+  showSlide(index);
+}
+
+// avanzar automático cada 3 segundos
+setInterval(nextSlide, 3000);
+
+// click en dots
+dots.forEach((dot, idx) => {
+  dot.addEventListener('click', () => showSlide(idx));
+});
+
+
+// Observer para hijo7
+const hijo7 = document.getElementById('hijo7');
+const observer7 = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      // Procesar h1 y párrafos con data-text
+      prepararMatrixTexto('matrix-h1');
+      prepararMatrixTexto('matrix-p1');
+      prepararMatrixTexto('matrix-p2');
+      prepararMatrixTexto('matrix-p3');
+      prepararMatrixTexto('matrix-p4');
+
+      // activar zoom en la imagen
+      const zoomElements = hijo7.querySelectorAll('.zoom-img');
+      zoomElements.forEach(el => {
+        el.classList.remove('visible');
+        void el.offsetWidth; // reflow
+        el.classList.add('visible');
+      });
+    }
+  });
+}, { threshold: 0.5 });
+
+if (hijo7) observer7.observe(hijo7);
+
+
+
+
+
+  // Seleccionamos todos los p dentro de hijo1, hijo2 y hijo7
+  const targets = document.querySelectorAll('.hijo1 p, .hijo2 p, .hijo7 p');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('activo');   // activa efecto
+      } else {
+        entry.target.classList.remove('activo'); // lo quita al salir
+      }
+    });
+  }, { threshold: 0.5 }); // se activa cuando el 50% es visible
+
+  // Observamos cada target
+  targets.forEach(target => observer.observe(target));
+
+   const target2 = document.querySelector('.hijo2');
+
+const observer2 = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      target2.classList.add('activo');
+    } else {
+      target2.classList.remove('activo');
+    }
+  });
+}, { threshold: 0.5 });
+
+observer2.observe(target2);       
+  </script>
 </body>
 </html>
