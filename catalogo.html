@@ -94,13 +94,38 @@
   color: white; /* texto blanco para contraste */
 }
 
-    
+      /* Estilo Matrix para h2 div 1 */
+    #matrix-text {
+     /*font-size: 2mpx;*/
+     /* letter-spacing: 4px;*/
+      color: #00ff00; /* verde Matrix */
+      white-space: pre;
+    }
+
+    #matrix-text span {
+      opacity: 0;
+      transform: translateY(-400px);
+      display: inline-block;
+      animation: caer 1.5s forwards;
+    }
+
+    @keyframes caer {
+      0%   { opacity: 0; transform: translateY(-400px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
 
     
     
     /*animacion color*/
-h2,h1{
+h2{
   animation: animate 10s infinite linear;
+  font-size:40px;
+}
+
+
+h1{
+  animation: animate 10s infinite linear;
+  font-size:30px;
 }
 
 @keyframes animate {
@@ -113,7 +138,7 @@ h2,h1{
  /*efecto olas de mar h2 div 2*/
     #wave-text {
    /* font-size:2em;*/
-    font-size:20px;
+    font-size:40px;
  /*   font-family: 'Raleway', sans-serif;*/
     display: inline-block;
     color: #00ffff; /* aqua */
@@ -303,6 +328,100 @@ h2,h1{
   100% { transform: scale(1); color: ; }
 }
 
+
+
+
+.zoom {
+  display: inline-block;
+  font-size: 30px;
+  /* Aplica ambas animaciones al mismo tiempo */
+  animation: zoomPulse 2s infinite ease-in-out,
+             animate 10s infinite linear;
+}
+
+/* Animación caída de toda la frase */
+@keyframes fallDownPhrase {
+  from {
+    transform: translateY(-150px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Aplica al h1 completo */
+#zoom {
+  display: inline-block;
+  opacity: 0;
+  animation: fallDownPhrase 5s ease forwards;
+}
+
+/* Animación pulsante */
+@keyframes zoomPulse {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.3); }
+  100% { transform: scale(1); }
+}
+
+/* ====== H1 con efecto Matrix + ciclo de color ====== */
+#matrix-h1 {
+  margin-bottom: 15px;
+  
+}
+
+#matrix-h1 .space {
+  display: inline-block;
+  width: 0.6em;
+}
+
+@keyframes matrixFade {
+  from { opacity: 0; transform: translateY(-20px); color:#000; }
+  to   { opacity: 1; transform: translateY(0); color:black; }
+}
+
+#matrix-h1 span {
+  opacity: 0;
+  display: inline-block;
+  animation: matrixFade 0.5s forwards;
+}
+
+#matrix-h1 span.colorCycle {
+  animation: animationcolor 6s infinite ease-in-out;
+}
+
+
+
+
+
+/* Animación caída de toda la frase */
+@keyframes fallDownPhrase {
+  from {
+    transform: translateY(-150px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Animación de ciclo de colores */
+@keyframes colorCycle {
+  0%   { color: aqua; }
+  25%  { color: deeppink; }
+  50%  { color: deepskyblue; }
+  75%  { color: gold; }
+  100% { color: white; }
+}
+
+/* Aplica al h1 completo */
+#zoom {
+  display: inline-block;
+  opacity: 0;
+  animation: fallDownPhrase 6s ease forwards, colorCycle 6s infinite ease-in-out;
+}
   </style>
 </head>
 <body>
@@ -310,6 +429,7 @@ h2,h1{
     <div class="hijo hijo1">
       <div class="mensaje-inicio">
         <h2 id="matrix-text" data-text="DJ PONCH"></h2>
+        <h1 id="matrix-text" data-text="DJ PONCH">HAZ CLICK<br />EN LA PANTALLA</h1>
         
         <p>
             
@@ -418,18 +538,36 @@ h2,h1{
  </div>
  
  <div class="hijo hijo7">
-    
+
+    <h1 id="zoom" data-text="DJ PONCH"></h1><br />
   
   <div class="footer-img">
   <!--p>Invitaciones LuzNet agradece tu preferencia.</p-->
-  <img class="zoom-img" src="https://i.ibb.co/5b7sMw5/IMG-20260226-WA0002.jpg
+  <img class="zoom-img" src="https://i.ibb.co/0yb8vMFX/image-1773517567834.jpg
   " alt="Logo LuzNet">
    <p id="matrix-p4" data-text="✨agradece tu preferencia✨"></p>
   </div>
+  
+  
+  
+  <audio id="spotAudio" src="https://www.dropbox.com/scl/fi/gqyj8nh6aey6sxyh3mb88/DJ-ponch.mp3?rlkey=7jatbb97xoh4bh8lh7brcvszr&st=avi52srg&dl=1
+  "></audio>
+
 
   <script>
   
-  //efecto div 1
+ // Al primer click en cualquier parte del documento, reproducir el audio
+  document.addEventListener("click", function() {
+    const audio = document.getElementById("spotAudio");
+    audio.play().catch(err => console.log("Error al reproducir:", err));
+  }, { once: true }); 
+  
+ 
+ 
+ 
+ 
+  
+ //efecto div 1
     function prepararMatrixTexto() {
       const p = document.getElementById('matrix-text');
       if (!p) return;
@@ -644,7 +782,32 @@ const observer2 = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.5 });
 
-observer2.observe(target2);       
+observer2.observe(target2);      
+
+
+// Función para aplicar efecto caída al texto
+function prepararFallTexto(elementId) {
+  const el = document.getElementById(elementId);
+  if (!el) return;
+
+  const texto = el.getAttribute('data-text');
+  el.textContent = '';
+
+  [...texto].forEach((letra, i) => {
+    const span = document.createElement('span');
+    span.textContent = letra;
+    // retraso progresivo para cada letra
+    span.style.animationDelay = (i * 0.1) + 's';
+    span.style.animationName = 'fallDown';
+    el.appendChild(span);
+  });
+}
+
+// Activar el efecto al cargar la página
+document.addEventListener("DOMContentLoaded", () => {
+  prepararFallTexto("zoom");
+});
+      
   </script>
 </body>
 </html>
