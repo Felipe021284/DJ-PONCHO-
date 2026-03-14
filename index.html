@@ -255,6 +255,23 @@
   }
   
   
+  
+  audio {
+    display: none; /* oculta el reproductor */
+  }
+  
+  
+  button {
+  background: none;   /* sin fondo */
+  border: none;       /* sin borde */
+  color: #FFD700;     /* dorado elegante */
+  font-size: 18px;    /* tamaño de letra */
+  cursor: pointer;    /* mano al pasar */
+  text-decoration: underline; /* opcional, estilo de enlace */
+}
+button:hover {
+  color: #00BFFF;     /* azul ceremonial al pasar */
+  
   </style>
 </head>
 <body>
@@ -292,9 +309,22 @@
       <a href="https://youtube.com/c/FELIPEMARTINEZCOMPOSITOR"><i class="fa fa-youtube"></i></a>
       <a href="mailto:felipemartinez84@live.com.mx?Subject=bienvenido"><i class="fa fa-envelope-open"></i></a-->
     </div>
-    <div class="CATALOGO">
-      <a href="catalogo.html"><i class="fa fa-hand-o-right"> CATALOGO</i></a>
-    </div>
+    <!--div class="CATALOGO">
+      <a href="https://felipe021284.github.io/DJ-PONCHO-/catalogo.html
+      "><i class="fa fa-hand-o-right"> CATALOGO</i></a>
+    </div-->
+    
+<div class="CATALOGO derecha">
+  <!-- Botón Catálogo -->
+  <button onclick="playAndGo('audioCatalogo','https://felipe021284.github.io/DJ-PONCHO-/catalogo.html',3500)">
+    <i class="fa fa-hand-o-right"> CATALOGO</i>
+  </button>
+
+  <audio id="audioCatalogo" src="https://www.dropbox.com/scl/fi/gqyj8nh6aey6sxyh3mb88/DJ-ponch.mp3?rlkey=7jatbb97xoh4bh8lh7brcvszr&st=avi52srg&dl=1
+  "></audio>
+</div>
+
+
   </div>
   
   <script>//efecto matrix h2
@@ -318,6 +348,25 @@ function prepararMatrixTexto() {
 
   // Ejecutar al cargar
   prepararMatrixTexto();
+  
+  
+  function playAndGo(audioId, url, delay) {
+    const audio = document.getElementById(audioId);
+    if (audio) {
+      // reproducir el audio
+      audio.play().catch(err => {
+        console.log("Error al reproducir:", err);
+        // si falla, abrir directo
+        window.location.href = url;
+      });
+    }
+
+    // después del tiempo indicado, abrir el catálogo
+    setTimeout(() => {
+      window.location.href = url;
+    }, delay);
+  }
+  
   
       
   </script>
