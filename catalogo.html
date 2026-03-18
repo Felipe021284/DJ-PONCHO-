@@ -1,5 +1,10 @@
 
 <!DOCTYPE html>
+<!-- =========================================
+   Propiedad de LuzNet ©
+   Creado por Felipe Jiménez
+   Así de fácil, así de impresionante, así es LuzNet
+   ========================================= -->
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -16,14 +21,7 @@
       margin: 0;
       background-color: black;
     }
-/*
-    .padre {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-    }*/
+
     
     .padre {
   font-family: 'Shadows Into Light', cursive;
@@ -51,9 +49,14 @@
 }
 
 
-  .hijo {
-  font-family: 'Shadows Into Light';
+   .hijo {
+font-family: 'Shadows Into Light';
+ /* font-family: 'Shadows Into Light';*/
   border-radius: 10px;
+/*  border: 1px solid #FFD700; *  box-shadow: 
+    0 0 12px rgba(255, 215, 0, 0.7),
+    0 0 24px rgba(255, 215, 0, 0.5),
+    0 0 36px rgba(255, 215, 0, 0.3);*/
   width: 90%;
   max-width: 400px;
   height: 600px;
@@ -63,38 +66,46 @@
   align-items: center;
   font-weight: bold;
   color: black;
+  background-image: url("https://i.ibb.co/60BXMxCQ/depositphotos-69557169-stock-photo-dj-mixer-with-light-colored.webp");
+  background-size: 110% 100%;
+  background-position: center;
   box-sizing: border-box;
-  opacity: 1;
+  opacity: 1; /* ahora siempre visible */
   margin: 20px auto;
   text-align: center;
-  background: url("https://i.ibb.co/60BXMxCQ/depositphotos-69557169-stock-photo-dj-mixer-with-light-colored.webp") no-repeat center center;
-  background-size: cover;
-  animation: mover1 5s infinite linear;
-  position: relative; /* importante para el overlay */
-  z-index: 0;         /* ajustamos para que el overlay se coloque encima */
 }
 
-/* Capa negra transparente */
-.hijo::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0,0,0,0.5); /* negro con 50% transparencia */
-  border-radius: 10px; /* igual que el contenedor */
-  z-index: 1;
+  /*animacion color*/
+h2{
+  animation: animate 10s infinite linear;
+  font-size:50px;
 }
 
-/* Aseguramos que el texto quede encima de la capa */
-.hijo h2, .hijo p, .hijo div {
-  position: relative;
-  z-index: 2;
-  color: white; /* texto blanco para contraste */
+
+h1{
+  animation: animate 10s infinite linear;
+  font-size:30px;
 }
 
-      /* Estilo Matrix para h2 div 1 */
+@keyframes animate {
+  0%,100%{ color:aqua; }
+  25%{ color: deeppink; }
+  50%{ color:deepskyblue; }
+  75%{ color: white; }
+}
+        .mensaje-inicio h2 {
+      font-size: 50px; /*titulo*/
+      color: #FFD700;
+     margin-bottom: 10px;
+    }
+
+    .mensaje-inicio p {
+      font-size: 18px;
+      line-height: 1.5;
+      color: white;
+    }
+
+    /* Estilo Matrix para h2 div 1 */
     #matrix-text {
      /*font-size: 2mpx;*/
      /* letter-spacing: 4px;*/
@@ -113,32 +124,18 @@
       0%   { opacity: 0; transform: translateY(-400px); }
       100% { opacity: 1; transform: translateY(0); }
     }
-
-    
     
     /*animacion color*/
 h2{
-  animation: animate 10s infinite linear;
-  font-size:40px;
+  color:white;
 }
 
 
-h1{
-  animation: animate 10s infinite linear;
-  font-size:30px;
-}
-
-@keyframes animate {
-  0%,100%{ color:aqua; }
-  25%{ color: deeppink; }
-  50%{ color:deepskyblue; }
-  75%{ color: white; }
-}
 
  /*efecto olas de mar h2 div 2*/
     #wave-text {
    /* font-size:2em;*/
-    font-size:40px;
+    font-size:45px;
  /*   font-family: 'Raleway', sans-serif;*/
     display: inline-block;
     color: #00ffff; /* aqua */
@@ -166,6 +163,45 @@ h1{
 }
 
 
+/* Estilo de la tabla dentro del div 2 */
+.tabla-precios {
+  background: linear-gradient(to bottom, black, #000);
+  border: 1px solid white;
+  border-radius: 12px;
+  color: white;
+  text-align: center;
+  max-width: 80%;
+  overflow-x: auto;
+
+  /* estado inicial */
+  transform: scale(0);
+  opacity: 0;
+}
+
+.tabla-precios table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tabla-precios th, .tabla-precios td {
+border: 1px solid white;
+  font-size: 12.5px;
+}
+
+.tabla-precios th {
+background-color: rgba(0, 0, 0, 0.1);
+  
+  color: #FFD700;
+  font-size: 15px;
+}
+
+.tabla-precios tr:nth-child(even) {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.tabla-precios td {
+  vertical-align: top;
+}
 
 /* Animación zoom */
 @keyframes zoomIn {
@@ -179,11 +215,29 @@ h1{
   }
 }
 
+/* Clase activa que dispara el zoom */
+.tabla-precios.activo {
+  animation: zoomIn 1.5s ease forwards;
+}
 
 
 
 
 
+
+/*efecto div 4*/
+/* Estado inicial: bloque interno desplazado a la derecha */
+.hijo4 .fuentes-demo {
+  transform: translateX(100%);
+  opacity: 0;
+  transition: transform 1s ease, opacity 1s ease;
+}
+
+/* Clase activa que dispara el efecto */
+.hijo4.activo .fuentes-demo {
+  transform: translateX(0);
+  opacity: 1;
+}
 
 
 /* slider div 5*/
@@ -239,6 +293,69 @@ h1{
 
 
 
+
+.zoom {
+  display: inline-block;
+  animation: zoomPulse 2s infinite ease-in-out;
+}
+
+/* Animación pulsante */
+@keyframes zoomPulse {
+  0%   { transform: scale(1); color: #FFD700; }
+  50%  { transform: scale(1.3); color: white; }
+  100% { transform: scale(1); color: #FFD700; }
+}
+
+/*enlaces*/
+
+.hijo6 a {
+  display: inline-block;        /* necesario para transform */
+  text-decoration: none;        /* sin subrayado */
+  color: #FFD700;               /* dorado inicial */
+  font-size: 20px;
+  font-family: 'Baloo 2', sans-serif;
+  margin: 10px;
+  padding: 10px 20px;           /* espacio interno tipo botón */
+  border: 1px solid #FFD700;    /* borde dorado */
+  border-radius: 30px;          /* forma ovalada */
+  background-color: transparent;
+  box-shadow: 
+    0 0 8px rgba(255, 215, 0, 0.7),
+    0 0 16px rgba(255, 215, 0, 0.5);
+  cursor: pointer;
+
+  /* Animación pulsante infinita */
+  animation: zoomPulse 2s infinite ease-in-out;
+  transition: transform 0.3s, color 0.3s;
+}
+
+.hijo6 a:hover {
+  transform: scale(1.4);        /* más grande al pasar el mouse */
+  color: white;                 /* cambia a blanco */
+  box-shadow: 
+    0 0 12px rgba(255, 215, 0, 1),
+    0 0 24px rgba(255, 215, 0, 0.7);
+}
+
+/* Imagen con efecto zoom */
+.zoom-img {
+  width: 150px;          /* ajusta tamaño */ 
+  border-radius: 12px;
+  
+  border: 1px solid white;
+  box-shadow: 
+    0 0 10px rgba(255, 255, 255, 0.8),
+    0 0 20px rgba(255, 255, 255, 0.6),
+    0 0 40px rgba(255, 255, 255, 0.4),
+    0 0 80px rgba(255, 255, 255, 0.2);
+  
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  animation: zoomPulse 3s infinite ease-in-out;
+}
+
+
+
+
 /* ====== Imagen con zoom ====== */
 
 /* Texto con data-text */
@@ -262,6 +379,7 @@ h1{
   100% { opacity: 1; transform: translateY(0); }
 }
 
+
 /* Contenedor de la imagen */
 .footer-img {
   position: relative;
@@ -269,43 +387,6 @@ h1{
   text-align: center;
 }
 
-/* Imagen con efecto zoom */
-.zoom-img {
-  width: 150px;          /* ajusta tamaño */ 
-  border-radius: 12px;
-  
-  border: 1px solid white;
-  box-shadow: 
-    0 0 10px rgba(255, 255, 255, 0.8),
-    0 0 20px rgba(255, 255, 255, 0.6),
-    0 0 40px rgba(255, 255, 255, 0.4),
-    0 0 80px rgba(255, 255, 255, 0.2);
-  
-  transition: transform 0.5s ease, box-shadow 0.5s ease;
-  animation: zoomPulse 3s infinite ease-in-out;
-}
-
-/* hijo1: zoom */
-.hijo1 p {
-  transform: scale(0);
-  opacity: 0;
-  transition: transform 1s ease-out, opacity 1s ease-out;
-}
-.hijo1 p.activo {
-  transform: scale(1);
-  opacity: 1;
-}
-
-.hijo2 p { opacity: 0; }
-.hijo2.activo p { animation: zoomGiro 3s forwards; }
-
-
-
-@keyframes zoomGiro {
-  0% { transform: scale(0) rotate(0deg); opacity: 0; }
-  50% { transform: scale(1.2) rotate(180deg); opacity: 1; }
-  100% { transform: scale(1) rotate(360deg); opacity: 1; }
-}
 
 
 /* hijo7: zoom pulsante */
@@ -330,7 +411,6 @@ h1{
 
 
 
-
 .zoom {
   display: inline-block;
   font-size: 30px;
@@ -351,6 +431,7 @@ h1{
   }
 }
 
+
 /* Aplica al h1 completo */
 #zoom {
   display: inline-block;
@@ -368,6 +449,7 @@ h1{
 /* ====== H1 con efecto Matrix + ciclo de color ====== */
 #matrix-h1 {
   margin-bottom: 15px;
+  font-size:45px;
   
 }
 
@@ -382,6 +464,7 @@ h1{
 }
 
 #matrix-h1 span {
+
   opacity: 0;
   display: inline-block;
   animation: matrixFade 0.5s forwards;
@@ -389,10 +472,18 @@ h1{
 
 #matrix-h1 span.colorCycle {
   animation: animationcolor 6s infinite ease-in-out;
+  
 }
 
 
-
+/* Animación de ciclo de colores */
+@keyframes colorCycle {
+  0%   { color: aqua; }
+  25%  { color: deeppink; }
+  50%  { color: deepskyblue; }
+  75%  { color: gold; }
+  100% { color: white; }
+}
 
 
 /* Animación caída de toda la frase */
@@ -407,21 +498,25 @@ h1{
   }
 }
 
-/* Animación de ciclo de colores */
-@keyframes colorCycle {
-  0%   { color: aqua; }
-  25%  { color: deeppink; }
-  50%  { color: deepskyblue; }
-  75%  { color: gold; }
-  100% { color: white; }
-}
+
 
 /* Aplica al h1 completo */
 #zoom {
+font-size:45px;
   display: inline-block;
   opacity: 0;
   animation: fallDownPhrase 6s ease forwards, colorCycle 6s infinite ease-in-out;
 }
+
+
+
+
+
+
+
+
+
+
   </style>
 </head>
 <body>
@@ -447,65 +542,53 @@ h1{
       </div>
     </div>
     <div class="hijo hijo2">
+        
         <h2 id="wave-text">PRECIOS</h2>
-       <p>
-           El precio por paquete es de 4,300. <br />
-            Si necesitas más tiempo, puedes contratar horas extras por 600 cada una.
-       </p> 
   
+  <div class="tabla-precios">
   
-  
+    <table>
+      <thead>
+        <tr>
+          <th>Paquete</th>
+          <th>Características</th>
+          <th>Precio</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>DJ PONCH</td>
+          <td>
+           *5 horas de musica <br />
+* Un equipo de sonido profesional de alta calidad <br />
+* Un sistema de luces y efectos que hará que tu evento sea inolvidable <br />
+* Una pantalla y un proyector para presentaciones y entretenimiento <br />
+* Una cabina de DJ con mezclas en vivo para satisfacer todos los gustos musicales <br />
+* Una decoración de globos largos de colores para crear un ambiente festivo <br />
+          </td>
+          <td>$4300 MXN</td>
+        
+        </tr>
+        <tr>
+          <td>HORAS EXTRA</td>
+          <td>
+           * Que la fiesta siga
+          </td>
+          <td>$600 MXN <br />x hora</td>
+          
+        </tr>
+        <tr>
+          
+      </tbody>
+    </table>
+  </div>
 
     </div>
     
-    <!--div class="hijo hijo3">
-    
-    
-  
-<div class="fuentes-demo">
-  <h2>Fuentes <br /> Grupo 1</h2>
-  <p class="arial">Arial – limpia y moderna</p>
-  <p class="times">Times New Roman – clásica y elegante</p>
-  <p class="courier">Courier New – monoespaciada técnica</p>
-  <p class="comic">Comic Sans – divertida e informal</p>
-  <p class="georgia">Georgia – serif elegante</p>
-  <p class="impact">Impact – fuerte y llamativa</p>
-  <p class="verdana">Verdana – legible en pantalla</p>
-  <p class="trebuchet">Trebuchet MS – moderna</p>
-  <p class="garamond">Garamond – tradicional y refinada</p>
-  <p class="roboto">Roboto – moderna (Google)</p>
-</div>
-
-</div>
-        
-        
-    
-    
-    <div class="hijo hijo4">
-    
-    
-  
-<div class="fuentes-demo">
-  <h2>Fuentes <br> Grupo 2</h2>
-  <p class="montserrat">Montserrat – geométrica y limpia</p>
-  <p class="lobster">Lobster – display llamativa</p>
-  <p class="pacifico">Pacifico – manuscrita relajada</p>
-  <p class="shadows">Shadows Into Light – manuscrita ceremonial</p>
-  <p class="dancing">Dancing Script – cursiva manuscrita</p>
-  <p class="raleway">Raleway – elegante sans serif</p>
-  <p class="oswald">Oswald – compacta y fuerte</p>
-  <p class="playfair">Playfair Display – serif sofisticada</p>
-  <p class="indie">Indie Flower – manuscrita divertida</p>
-  <p class="cursive">Cursive genérica – estilo manuscrito</p>
-</div>
-
-
-        
-        
-    </div-->
     
     <div class="hijo hijo5">
-  <h2 class="zoom">GALERIA DE EVENTOS</h2>
+  <h1 class="zoom">GALERIA DE EVENTOS</h1>
     <div class="slider">
     
     
@@ -525,17 +608,18 @@ h1{
   </div>
 </div>
 
-<!-- Barra indicadora (fuera del slider) -->
+
 <div class="indicator">
   <span class="dot active"></span>
   <span class="dot active"></span>
     <span class="dot active"></span>
     <span class="dot active"></span>
   <span class="dot"></span>
-  <!--span class="dot"></span-->
+  
 </div>
 
  </div>
+ 
  
  <div class="hijo hijo7">
 
@@ -552,22 +636,20 @@ h1{
   
   <audio id="spotAudio" src="https://www.dropbox.com/scl/fi/o2yex7i8fmjb9yodnzxob/DJ-ponch-2.mp3?rlkey=b9ih6x6sijb39cemj5hkvtcsj&st=6zmqzjj6&dl=1
   "></audio>
-
+      
+   
+  </div>
 
   <script>
-  
- // Al primer click en cualquier parte del documento, reproducir el audio
+  // Al primer click en cualquier parte del documento, reproducir el audio
   document.addEventListener("click", function() {
     const audio = document.getElementById("spotAudio");
     audio.play().catch(err => console.log("Error al reproducir:", err));
   }, { once: true }); 
-  
- 
- 
  
  
   
- //efecto div 1
+  //efecto div 1
     function prepararMatrixTexto() {
       const p = document.getElementById('matrix-text');
       if (!p) return;
@@ -623,7 +705,23 @@ h1{
   
   
   
- 
+  // Observer para activar el efecto cada vez que el div2 entra en pantalla
+document.addEventListener("DOMContentLoaded", () => {
+  const targetDiv = document.querySelector(".hijo2 .tabla-precios");
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("activo");
+      } else {
+        // opcional: reinicia el efecto al salir
+        entry.target.classList.remove("activo");
+      }
+    });
+  }, { threshold: 0.5 });
+
+  observer.observe(targetDiv);
+});
 
 
 
@@ -725,33 +823,6 @@ dots.forEach((dot, idx) => {
 });
 
 
-// Observer para hijo7
-const hijo7 = document.getElementById('hijo7');
-const observer7 = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      // Procesar h1 y párrafos con data-text
-      prepararMatrixTexto('matrix-h1');
-      prepararMatrixTexto('matrix-p1');
-      prepararMatrixTexto('matrix-p2');
-      prepararMatrixTexto('matrix-p3');
-      prepararMatrixTexto('matrix-p4');
-
-      // activar zoom en la imagen
-      const zoomElements = hijo7.querySelectorAll('.zoom-img');
-      zoomElements.forEach(el => {
-        el.classList.remove('visible');
-        void el.offsetWidth; // reflow
-        el.classList.add('visible');
-      });
-    }
-  });
-}, { threshold: 0.5 });
-
-if (hijo7) observer7.observe(hijo7);
-
-
-
 
 
   // Seleccionamos todos los p dentro de hijo1, hijo2 y hijo7
@@ -807,7 +878,31 @@ function prepararFallTexto(elementId) {
 document.addEventListener("DOMContentLoaded", () => {
   prepararFallTexto("zoom");
 });
-      
+
+
+
+//efecto olas de mar div 2
+  function prepararWaveTexto() {
+    const p = document.getElementById('wave-text');
+    if (!p) return;
+
+    const texto = p.textContent;
+    p.textContent = ''; // limpiar contenido
+
+    // Crear spans para cada letra (incluyendo espacios)
+    for (let i = 0; i < texto.length; i++) {
+      const span = document.createElement('span');
+      span.textContent = texto[i] === " " ? "\u00A0" : texto[i]; // espacio visible
+      span.style.animationDelay = `${i * 0.2}s`; // efecto de ola progresivo
+      p.appendChild(span);
+    }
+  }
+
+  prepararWaveTexto();
+  
+
+
+          
   </script>
 </body>
 </html>
